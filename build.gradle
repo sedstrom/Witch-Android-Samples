@@ -1,0 +1,53 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.kotlin_version = '1.1.3'
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        maven {
+            url "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
+    }
+}
+
+ext {
+    minSdkVersion = 15
+    targetSdkVersion = 25
+    compileSdkVersion = 25
+    buildToolsVersion = '25.0.2'
+    sourceCompatibilityVersion = JavaVersion.VERSION_1_7
+    targetCompatibilityVersion = JavaVersion.VERSION_1_7
+}
+
+def supportLibraryVersion = '25.3.1'
+
+ext.deps = [
+        // Android
+        supportCompat           : "com.android.support:support-compat:$supportLibraryVersion",
+        supportAppCompat        : "com.android.support:appcompat-v7:$supportLibraryVersion",
+        supportDesign           : "com.android.support:recyclerview-v7:$supportLibraryVersion",
+        supportRecyclerView     : "com.android.support:design:$supportLibraryVersion",
+        supportConstraintLayout : "com.android.support.constraint:constraint-layout:1.0.2",
+
+
+        // Test dependencies
+        junit              : 'junit:junit:4.12',
+        mockitoCore        : 'org.mockito:mockito-core:2.7.12',
+]
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
