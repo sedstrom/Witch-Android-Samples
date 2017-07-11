@@ -33,8 +33,15 @@ ext {
 }
 
 def supportLibraryVersion = '25.3.1'
+def witchVersion = '0.5.0'
 
 ext.deps = [
+
+
+        // Witch
+        witch           : "se.snylt:witch:$witchVersion",
+        witchProcessor  : "se.snylt:witch-processor:$witchVersion",
+
         // Android
         supportCompat           : "com.android.support:support-compat:$supportLibraryVersion",
         supportAppCompat        : "com.android.support:appcompat-v7:$supportLibraryVersion",
@@ -44,8 +51,8 @@ ext.deps = [
 
 
         // Test dependencies
-        junit              : 'junit:junit:4.12',
-        mockitoCore        : 'org.mockito:mockito-core:2.7.12',
+        junit           : 'junit:junit:4.12',
+        mockitoCore     : 'org.mockito:mockito-core:2.7.12',
 ]
 
 task clean(type: Delete) {
