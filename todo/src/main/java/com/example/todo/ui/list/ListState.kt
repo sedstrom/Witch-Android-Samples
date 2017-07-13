@@ -24,19 +24,19 @@ class ListState {
 
   var newTodo: Todo? = null @BindTo(R.id.new_todo) get
 
-  val bindsNewTodo: Binder<NewTodoView, Todo>
-    @Binds get() = Binder.create<NewTodoView, Todo>()
-      .invisibleOnce().slideOutBottomIfNull().slideInBottomIfNotNull().setTodo()
+  val bindsNewTodo: Binder<NewTodoView, Todo> = Binder.create<NewTodoView, Todo>()
+    .invisibleOnce().slideOutBottomIfNull().slideInBottomIfNotNull().setTodo()
+    @Binds get
 
   val fabVisible: Int @BindTo(R.id.add_todo_fab) get() = if(newTodo == null) View.VISIBLE else View.INVISIBLE
 
-  val bindsFabVisible: Binder<View, Int> @Binds get() = Binder.create<View, Int>()
-    .scaleUpIfVisible().scaleDownIfNotVisible().setVisiblity()
+  val bindsFabVisible: Binder<View, Int> = Binder.create<View, Int>()
+    .scaleUpIfVisible().scaleDownIfNotVisible().setVisiblity() @Binds get
 
   val progress: String @BindTo(R.id.progress_tv) get() = "${todos.sizeDone()}/${todos.size}"
 
-  val bindsProgress @Binds get() = Binder.create<android.widget.TextView, String>()
-    .flipOut().setText().flipIn()
+  val bindsProgress = Binder.create<android.widget.TextView, String>()
+    .flipOut().setText().flipIn() @Binds get
 
   override fun toString(): String {
     return "[\n todos: ${todos.size}\n newTodo: $newTodo\n]"
