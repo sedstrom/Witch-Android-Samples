@@ -1,1 +1,1 @@
-include ':todo', ':githubrepos'
+include ':todo', ':githubrepos', ':kittens'
