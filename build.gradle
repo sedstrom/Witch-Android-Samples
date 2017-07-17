@@ -33,7 +33,7 @@ ext {
 }
 
 def supportLibraryVersion = '25.3.1'
-def witchVersion = '0.5.1'
+def witchVersion = '0.5.2'
 ext.deps = [
 
         // Witch
