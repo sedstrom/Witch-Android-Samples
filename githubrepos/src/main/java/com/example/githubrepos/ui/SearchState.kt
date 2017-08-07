@@ -1,8 +1,8 @@
 package com.example.githubrepos.ui
 
 import android.view.View
-import com.example.githubreposearch.R
 import com.example.githubrepos.io.SearchItem
+import com.example.githubreposearch.R
 import se.snylt.witch.annotations.BindToRecyclerView
 import se.snylt.witch.annotations.BindToTextView
 import se.snylt.witch.annotations.BindToView
@@ -29,9 +29,5 @@ open class SearchState(val requests: AtomicInteger = AtomicInteger(), var search
       } else {
         ""
       }
-
-  override fun toString(): String {
-    return "[ \n requests: ${requests.get()}\n items: ${items.size}\n searchText: $searchText\n]"
-  }
 
 }

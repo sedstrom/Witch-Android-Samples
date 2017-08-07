@@ -18,7 +18,7 @@ open class NewTodoState {
 
   var keyboardVisible: Boolean = false @BindTo(R.id.add_todo_et) get
 
-  var bindsKeyboardVisible = Binder.create(object: SyncOnBind<EditText, Boolean>() {
+  var bindsKeyboardVisible: Binder<EditText, Boolean> = Binder.create(object: SyncOnBind<EditText, Boolean>() {
     override fun onBind(et: EditText?, keyboardVisible: Boolean?) {
       if(keyboardVisible!!) {
         et?.requestFocus()
@@ -30,8 +30,4 @@ open class NewTodoState {
       }
     }
   }) @Binds get
-
-  override fun toString(): String {
-    return "[\ninputText: $inputText\nkeyboardVisible: $keyboardVisible\n]"
-  }
 }

@@ -10,10 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import se.snylt.witch.annotations.BindTo;
-import se.snylt.witch.annotations.BindToView;
 import se.snylt.witch.annotations.BindToViewPager;
 import se.snylt.witch.annotations.Binds;
 import se.snylt.witch.viewbinder.bindaction.Binder;
+import se.snylt.witch.viewbinder.bindaction.SyncOnBind;
 
 import static com.example.kittens.utils.BinderUtils.toast;
 
@@ -24,8 +24,17 @@ class PagerState {
     @BindToViewPager(id = R.id.view_pager, adapter = KittenPagerAdapter.class, set = "kittens")
     List<Kitten> kittens = new ArrayList<>();
 
-    @BindToView(id = R.id.view_pager, view = ViewPager.class, set = "currentItem")
+    @BindTo(R.id.view_pager)
     int startPosition = 0;
+
+    @Binds
+    Binder<ViewPager, Integer> bindsStartPosition = Binder.create(new SyncOnBind<ViewPager, Integer>() {
+        @Override
+        public void onBind(ViewPager viewPager, Integer startPosition) {
+
+            viewPager.setCurrentItem(startPosition, false);
+        }
+    });
 
     @BindTo(R.id.view_pager)
     String instructions = "Swipe to see more kittens :)";

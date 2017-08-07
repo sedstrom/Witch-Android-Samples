@@ -10,7 +10,12 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
+import io.reactivex.subjects.PublishSubject;
+import io.reactivex.subjects.Subject;
+
 public class PagerActivity extends AppCompatActivity {
+
+    Subject<Boolean> activityStopped = PublishSubject.create();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +26,11 @@ public class PagerActivity extends AppCompatActivity {
         pager.setAdapter(new KittenPagerAdapter());
 
         new PagerPresenter(new StateBinder<PagerState>(this), getIntent().getIntExtra("id", 0));
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
     }
 
     public static Intent create(Context context, Kitten kitten) {

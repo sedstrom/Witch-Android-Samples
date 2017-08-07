@@ -1,7 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext.kotlin_version = '1.1.3'
+    ext.kotlin_version = '1.1.3-2'
     repositories {
         jcenter()
     }
@@ -33,7 +33,7 @@ ext {
 }
 
 def supportLibraryVersion = '25.3.1'
-def witchVersion = '0.5.2'
+def witchVersion = '0.5.5'
 ext.deps = [
 
         // Witch
@@ -47,8 +47,6 @@ ext.deps = [
         supportRecyclerView     : "com.android.support:design:$supportLibraryVersion",
         supportCardView         : "com.android.support:cardview-v7:$supportLibraryVersion",
         supportConstraintLayout : "com.android.support.constraint:constraint-layout:1.0.2",
-
-
 
         // Test dependencies
         junit           : 'junit:junit:4.12',

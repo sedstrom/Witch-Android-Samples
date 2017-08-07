@@ -37,8 +37,4 @@ class ListState {
 
   val bindsProgress = Binder.create<android.widget.TextView, String>()
     .flipOut().setText().flipIn() @Binds get
-
-  override fun toString(): String {
-    return "[\n todos: ${todos.size}\n newTodo: $newTodo\n]"
-  }
 }

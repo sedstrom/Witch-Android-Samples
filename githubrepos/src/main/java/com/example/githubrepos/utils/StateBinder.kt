@@ -1,7 +1,6 @@
 package com.example.githubrepos.utils
 
 import android.app.Activity
-import android.util.Log
 import android.view.View
 import se.snylt.witch.viewbinder.Witch
 
@@ -13,7 +12,6 @@ class StateBinder<in State> (val viewFinder: Any) {
     } else if (viewFinder is View) {
       Witch.bind(state, viewFinder)
     }
-    Log.d("State", state.toString())
   }
 }
 
