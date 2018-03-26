@@ -2,7 +2,7 @@ package com.example.todo
 
 import android.app.Application
 import com.example.todo.io.TodoStore
-import se.snylt.witch.viewbinder.Witch
+import se.snylt.witch.android.Witch
 
 class App: Application() {
 

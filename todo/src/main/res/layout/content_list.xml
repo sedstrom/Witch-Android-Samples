@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:showIn="@layout/activity_list"
-        tools:context="com.example.todo.ui.list.ListActivity">
+        tools:context="com.example.todo.ui.TodoActivity">
 
     <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_view"

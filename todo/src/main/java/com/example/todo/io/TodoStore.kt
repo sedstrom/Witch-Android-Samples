@@ -2,26 +2,32 @@ package com.example.todo.io
 
 import io.reactivex.Observable
 import io.reactivex.subjects.BehaviorSubject
+import io.reactivex.subjects.Subject
 import java.util.*
 
 class TodoStore {
 
-  val subject: BehaviorSubject<List<Todo>> = BehaviorSubject.createDefault(listOf())
+  var todos: List<Todo> = listOf()
 
-  val todos : Observable<List<Todo>> get() = subject
+  val updated: Subject<List<Todo>> = BehaviorSubject.createDefault(todos)
 
   fun post(todo: Todo) {
-    subject.onNext(subject.value + todo)
+    todos = todos + todo
+    updated()
   }
 
   fun delete(todo: Todo) {
-    val todos = subject.value.mapNotNull { t ->  if(todo.id == t.id) null else t  }
-    subject.onNext(todos)
+    todos = todos.mapNotNull { t ->  if(todo.id == t.id) null else t  }
+    updated()
   }
 
   fun update(todo: Todo) {
-    val todos = subject.value.map { t ->  if(todo.id == t.id) todo else t }
-    subject.onNext(todos)
+    todos = todos.map { t ->  if(todo.id == t.id) todo else t }
+    updated()
+  }
+
+  private fun updated() {
+    updated.onNext(todos)
   }
 
   fun createTodo(): Todo {
