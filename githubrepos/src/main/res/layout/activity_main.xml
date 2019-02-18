@@ -4,7 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.example.githubreposearch.com.example.githubrepos.ui.SearchActivity">
+        tools:context="com.example.githubrepos.ui.search.SearchReposActivity">
 
     <EditText
             android:id="@+id/search_et"
@@ -13,10 +13,10 @@
 
     <ProgressBar
             android:indeterminate="true"
-            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
             android:id="@+id/progress"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:padding="8dp"/>
 
     <android.support.v7.widget.RecyclerView

@@ -1,10 +1,15 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+androidExtensions {
+    experimental = true
+}
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+    buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId "com.example.githubrepos"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -25,22 +30,24 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
     // Witch
-    compile rootProject.ext.deps.witch
+    api rootProject.ext.deps.witch
     kapt rootProject.ext.deps.witchProcessor
 
+    implementation "android.arch.lifecycle:extensions:1.1.1"
+
     // Square
-    compile 'com.squareup.retrofit2:retrofit:2.3.0'
-    compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
-    compile 'com.squareup.picasso:picasso:2.5.2'
+    api 'com.squareup.retrofit2:retrofit:2.3.0'
+    api 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    api 'com.squareup.retrofit2:converter-gson:2.3.0'
+    api 'com.squareup.picasso:picasso:2.5.2'
 
     // RX
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    compile 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
+    api 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    api 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
 
-    compile rootProject.ext.deps.supportConstraintLayout
-    compile rootProject.ext.deps.supportAppCompat
-    compile rootProject.ext.deps.supportDesign
+    api rootProject.ext.deps.supportConstraintLayout
+    api rootProject.ext.deps.supportAppCompat
+    api rootProject.ext.deps.supportDesign
 
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }

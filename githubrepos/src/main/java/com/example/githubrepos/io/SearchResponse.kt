@@ -1,24 +1,8 @@
 package com.example.githubrepos.io
 
-open class SearchResponse {
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
-  lateinit var items: ArrayList<SearchItem>
-}
-
-open class SearchItem {
-
-  var id: Int = 0
-
-  lateinit var name: String
-
-  lateinit var owner: Owner
-}
-
-open class Owner {
-
-  lateinit var avatar_url: String
-
-  lateinit var login: String
-
-
-}
+data class SearchResponse(val items: Array<SearchItem>)
+data class SearchItem(val id: Int, val name: String, val owner: Owner)
+@Parcelize data class Owner(val avatar_url: String, val login: String) : Parcelable
